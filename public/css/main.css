@@ -1,0 +1,61 @@
+
+body{
+    background: #aaa;
+    font-size: 16px;
+    font-family: 'Lato';
+}
+.fa-btn {
+    margin-right: 6px;
+}
+.progress{
+ padding:0px;
+    height: 33px;
+}
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.progress-bar-warning{
+    border-radius: 5px;float:left; height:30px;
+    background: linear-gradient(to top, #F2AF32, #F6E785) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.progress{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#rating{
+    border:1px solid #ccc;
+    border-radius: 5px;
+}
+iframe{
+    width:70%;
+}
+.navbar-fixed-bottom{
+    position: absolute;
+}
+.main{
+    background: #eee;
+}
+.alert-info{
+    border-color: #1d7999;
+}
+img{
+    box-shadow: 0 0 10px #888888;
+}
+.arrow-left,.arrow-right {
+    color: #fff;
+  background:   #3291ef url("/image/arrow_r.jpg") no-repeat scroll center center;
+    padding-top: 20px;
+    height: 60px;
+    border-radius: 0 10px 10px 0px ;
+}
+.arrow-left{
+    border-radius: 10px 0px 0px 10px ;
+    background:   #3291ef url("/image/arrow_l.jpg") no-repeat scroll center center;
+}
+.arrow-left:hover {
+    background:   #2b86e1 url("/image/arrow_l_active.jpg") no-repeat scroll center center;
+}
+.arrow-right:hover{
+    background:   #2b86e1 url("/image/arrow_r_active.jpg") no-repeat scroll center center;
+}
