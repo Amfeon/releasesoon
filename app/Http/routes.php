@@ -23,7 +23,8 @@ Route::group(['middleware'=> 'auth'],function(){
     Route::post('/store/{id?}','FilmController@store');
     Route::get('/show/{id}','FilmController@show');
     Route::get('/delete/{id}','FilmController@drop');
-    Route::get('/parse_blu_ray','ParseController@update_Blu_ray');
+    Route::get('/parse_blu_ray','ParseController@update_Blu_ray'); //обновление DVD релизов
+    Route::get('/parse_imdb','ParseController@update_imdb'); // Обновление дат выхода
     Route::get('/parse','ParseController@parse');// поменять на парсер
     Route::get('/parseImage','ParseController@parseImage');// поменять на парсер
 });

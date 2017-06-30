@@ -55,6 +55,7 @@
                 <li><a href="{{ url('/create') }}">Создать</a></li>
                 <li><a href="{{ url('/update') }}">Обновить</a></li>
                 <li><a href="{{ url('/parse_blu_ray') }}">Обновить Blu_rays</a></li>
+                <li><a href="{{ url('/parse_imdb') }}">Обновить Даты выхода</a></li>
 
             </ul>
 

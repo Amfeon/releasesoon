@@ -263,22 +263,22 @@ public function getReleaseImdb($url){
             ->get();
         foreach ($updated_films as $film){
             //доделать функцию обновления даты
-            if($film->date_sourse!=null){
+            if($film->imdb!=null){
                 $new_date=$this->getReleaseImdb($film->imdb);
-                if($new_date!=0){
+                if($new_date!=null){
                     $new_date=trim($new_date);
                     if($new_date!=$film->date_release){
                         //Сделать функцию добавления в новости
                         $film_model=Film::find($film->id);
                         $film_model->date_release=$new_date;
                         $film_model->save();
-                        FilmChange::insert([
+                     /*   FilmChange::insert([
                             'film_id'=>$film->id,
-                            'DVD_release'=>1
-                        ]);
-                        echo "Дата изменена".$film_model->title."<br>";
+                            'DVD_release'=>0
+                        ]);*/
+                        echo "Дата изменена ".$film_model->title." на ".$new_date."<br>";
                     }else{
-                        echo "Даты совпали <br>";
+                        echo "Даты совпали для ".$film_model->title."<br>";
                         continue;
                     }
                 }
