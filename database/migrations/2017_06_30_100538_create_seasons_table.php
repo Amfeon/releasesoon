@@ -19,6 +19,7 @@ class CreateSeasonsTable extends Migration
             $table->char('years',25);
             $table->string('image');
             $table->text('actors');
+            $table->text('trailer');
             $table->text('text');
             $table->timestamps();
         });

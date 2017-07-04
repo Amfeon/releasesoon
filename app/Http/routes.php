@@ -33,7 +33,7 @@ Route::get('/film/{id}', 'FilmController@index')->where(['id'=>'[0-9]+']);
 Route::get('/', 'FilmController@mainPage');
 Route::post('/', 'FilmController@pagination');
 Route::get('/dvd/{data?}','FilmController@Blu_ray')->where(['data'=>'\w{3,9}\-\d{4}']);
-//Route::get('/home', 'HomeController@index');
+Route::get('/tv','SerialController@main');
 Route::post('/rating','RatingController@showRating');
 Route::post('/ratingAdd','RatingController@calcRating'); //нужен будет посредник на отправку аякс
 Route::get('/release-changes','NewsController@changes_show');
