@@ -80,6 +80,13 @@ h1,h2,h3,h4,h5{
     width: calc(100% - 80px);
     margin: 20px;
   }
+    .row{
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
 }
 .scroll, .row{
   display: flex;
