@@ -10,7 +10,7 @@ class SitemapController extends Controller
 {
     //
     public function index(){
-        $films=Film::orderBy('release', 'asc')->get();
+        $films=Film::orderBy('date_release', 'asc')->get();
         return view('layouts.sitemap',['films'=>$films]);
     }
 

@@ -16,10 +16,10 @@
           <p> К сожалению, в этом месяце Blu-ray релизов не запланированно!</p>
         </div>
         <div class="blu_ray_nav" >
-            <a  class="left" href="/blu-ray/{{$data['prev']}}"><div >
+            <a  class="left" href="/dvd/{{$data['prev']}}"><div >
                     {{$data['prev']}}
                 </div></a>
-            <a class="right"  href="/blu-ray/{{$data['next']}}">
+            <a class="right"  href="/dvd/{{$data['next']}}">
                 <div >
                     {{$data['next']}}
                 </div></a>

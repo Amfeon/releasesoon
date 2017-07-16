@@ -16,6 +16,16 @@
 @section('content')
 <main class="container" itemscope itemtype="http://schema.org/Movie">
     <h1 class="success" itemprop="name">{{$film->title}} / {{$film->original}}</h1>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- алаптивные верх -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4528857575775094"
+         data-ad-slot="6307733935"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     <div class="row ">
         <div class="image_block">
             <div class="picture">

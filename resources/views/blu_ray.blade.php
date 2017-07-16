@@ -14,6 +14,16 @@
     <main class="container">
         <div class="row">
             <h1 class=" alert alert-info"> DVD релизы запланированные на   {{$data['now']}}</h1>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- алаптивные верх -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-4528857575775094"
+                 data-ad-slot="6307733935"
+                 data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
             <p>
                 В заметках указана дата DVD (HD и Blu-Ray) релиза в Америке, у нас фильмы выходят раньше или так же (данные хрен найдешь, так что сильно не ругайтесь). Довольно часто даты переносятся издателями, так что следите =)
             </p>

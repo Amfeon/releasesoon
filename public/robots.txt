@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
-HOST: https://kinopitka.ru
-Sitemap: https://kinopitka.ru/sitemap.xml
+HOST: https://releasesoon.ru
+Sitemap: https://releasesoon.ru/sitemap.xml
