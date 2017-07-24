@@ -29,7 +29,7 @@
                                 <a href='film/{{$film->id}}'>
                                     <img  width="150" height="250" src ='{{$film->image}}' alt='Подробнее о фильме {{$film->title}}' title='Подробнее о фильме {{$film->title}}'/>
                                 </a>
-                                <div class="stripe_down">Дата Выхода:<br/> {{$film->date_release}}</div>
+                                <div class="stripe_down">Дата Выхода:<br/> {{@date('d-m-Y', strtotime($film->date_release))}}</div>
                             </div>
                         </li>
                     @endforeach

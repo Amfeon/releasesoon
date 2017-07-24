@@ -29,7 +29,6 @@ class FilmController extends Controller
 
     }
     public function mainPage(film $filmModel){
-
        $films=DB::table('films')->where('date_release','>=',Carbon::now()->subWeek(3))->take(12)->orderBy('date_release', 'asc')->get();
         //$films=$filmModel->mainPageGet());
         return view('home',['films'=>$films]);
@@ -191,7 +190,7 @@ class FilmController extends Controller
                 return redirect('/dvd/');
             }
             /* МЕсяц нужно преобразовать в цыфру,а потом сравнить с текущим*/
-            $film= DB::select('select * from films where MONTH(DVD_release)=? AND YEAR(DVD_release)=?', [$month,$mass[1]]);// нужна проверка успешности запроса
+            $film= DB::select('select * from films where MONTH(DVD_release)=? AND YEAR(DVD_release)=? ORDER BY DVD_release', [$month,$mass[1]]);// нужна проверка успешности запроса
 
                //  $now='month.'.$mass[0].'';
                  $now=trans('month.'.$mass[0].'');
@@ -209,7 +208,7 @@ class FilmController extends Controller
             $carbon=Carbon::now()->month; //получаем месяц
             $year=Carbon::now()->year; //получаем текущий год
             $prev_year=$next_year=$year;
-            $film= DB::select('select * from films where MONTH(DVD_release)=? AND YEAR(DVD_release)=?', [$carbon,$year]);// нужна проверка успешности запроса
+            $film= DB::select('select * from films where MONTH(DVD_release)=? AND YEAR(DVD_release)=? ORDER BY DVD_release', [$carbon,$year]);// нужна проверка успешности запроса
             $month=$carbon;
             $next_month=$month+1;
             if($next_month==13){ // определение Января нового года

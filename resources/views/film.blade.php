@@ -45,7 +45,7 @@
         </div>
         <div class="date_block">
             <div class="stroka"><strong >Дата выхода в России: </strong>             <p class="date"> <span itemprop="datePublished">{{$date['date_release']}}</span> года</p></div>
-            <div class="stroka"><strong >Дата DVD / HD релиза: </strong>             <p class="date"> {{$date['DVD_release']}} года</p></div>
+            <div class="stroka"><strong >Дата DVD / Blu-Ray релиза: </strong>        <p class="date"> {{$date['DVD_release']}} года</p></div>
             <div class="share" id="rating">
             </div>
             <div class="stroka"><strong >Режиссер: </strong>                         <p class="date" itemprop="director"> {{$film->director}}</p></div>

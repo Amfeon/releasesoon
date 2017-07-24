@@ -60,6 +60,7 @@ h1,h2,h3,h4,h5{
   color: $color-info;
   border: 1px solid $color-info;
 }
+
 .container{
   max-width:1170px;
   display: flex;
@@ -87,6 +88,11 @@ h1,h2,h3,h4,h5{
       justify-content: center;
     }
   }
+}
+.commerce{
+ min-width: 1170px;
+  margin: 20px auto;
+
 }
 .scroll, .row{
   display: flex;
@@ -343,7 +349,7 @@ color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
   .title{
-    width:calc(100%- 22px);
+    width:calc(100% - 22px);
     background: $gradient-warning;
     padding: 10px;
     text-align: center;
