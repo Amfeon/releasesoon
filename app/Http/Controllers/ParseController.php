@@ -46,34 +46,43 @@ class ParseController extends Controller
             $mm1 = "12";
         return $mm1;
     }
-public function getReleaseImdb($url){
+public function getReleaseImdb($url)
+{
+    if ($url != null) {
     $flag = 0;
-    preg_match('~tt.[0-9]{1,}~',$url,$a);
-    $url=$a[0];
-       // $url='http://www.imdb.com/title/tt4765284/';
-        $url =  'http://www.imdb.com/title/'.$url.'/';
-        $simpleHTML = new Htmldom();
-        $all = $simpleHTML->file_get_html($url);
-        for($i=2;$i<5;$i++){
-            foreach ($all->find('//*[@id="titleDetails"]/div['.$i.']') as $link) {
-                $data = $link->innertext;
-                if(substr_count($data,'Release Date')){
-                    echo "Запись найдена";
-                    break 2;
-                }
+    preg_match('~tt.[0-9]{1,}~', $url, $a);
+    $url = $a[0];
+    // $url='http://www.imdb.com/title/tt4765284/';
+
+    $url = 'http://www.imdb.com/title/' . $url . '/';
+    $simpleHTML = new Htmldom();
+    $all = $simpleHTML->file_get_html($url);
+    for ($i = 2; $i < 5; $i++) {
+        foreach ($all->find('//*[@id="titleDetails"]/div[' . $i . ']') as $link) {
+            $data = $link->innertext;
+            if (substr_count($data, 'Release Date')) {
+                //  echo "Запись найдена";
+                break 2;
             }
         }
-        $russia = 0;
-        $russia = substr_count($data, '(Russia)');// наличие отечественного названия
-        if ($russia != 0) {
-            // echo "Отечественная дата:<br>";
-            preg_match('~[[:digit:]]{1,2} [[:alpha:]]{3,9} [[:digit:]]{4}~', $data, $array);
+    }
+    $russia = 0;
+    $russia = substr_count($data, '(Russia)');// наличие отечественного названия
+    if ($russia != 0) {
+        // echo "Отечественная дата:<br>";
+        if (preg_match('~[[:digit:]]{1,2} [[:alpha:]]{3,9} [[:digit:]]{4}~', $data, $array)) {
             $date = explode(' ', $array[0]);
             $data = $date[2] . '-' . $this->dat($date[1]) . '-' . $date[0];
-        }else{
-            $data=null;
+        } else {
+            $data = null;
         }
+    } else {
+        $data = null;
+    }
         return $data;
+        }else{
+        return null;
+        }
 }
     public function parse(Request $request)
     {
