@@ -1,6 +1,6 @@
 @extends('layouts.basic')
 @section('head')
-    <meta name="description" content="Здесь вы можете найти дату выхода лицензии ожидаемого вами фильма на DVD, Blu-ray и HD или iTunes.">
+    <meta name="description" content="Дата выхода лицензии ожидаемого вами фильма на DVD, Blu-ray и HD или iTunes, которые запланированы на {{$data['now']}}" >
     <title>
             Расписание DVD, Blu-ray и HD лицензированных релизов ожидаемых фильмов намеченных на @if(isset($data['now'])) {{$data['now']}} @endif Скоро-Выход.ru
     </title>
@@ -18,7 +18,9 @@
                 В заметках указана дата DVD (HD и Blu-Ray) релиза в Америке, у нас фильмы выходят раньше или так же (данные хрен найдешь, так что сильно не ругайтесь). Довольно часто даты переносятся издателями, так что следите =)
             </p>
         </div>
-
+        <div class="row">
+            <div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir"></div>
+        </div>
         <div class="row">
             <ul id='scroll' >
                 @foreach($films as $film)

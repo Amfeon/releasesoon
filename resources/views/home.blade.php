@@ -19,6 +19,9 @@
                 </p>
             </div>
             <div class="row">
+                <div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir"></div>
+            </div>
+            <div class="row">
                 <ul id='scroll' >
                     @foreach($films as $film)
                         <li>
