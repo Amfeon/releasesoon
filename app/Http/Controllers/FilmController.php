@@ -89,7 +89,7 @@ class FilmController extends Controller
                 }
                 return redirect('/admin');
             } else {
-                preg_match('~[0-9]{4,}~',$request->kinopoisk,$a);
+                preg_match('~[0-9]{5,}~',$request->kinopoisk,$a);
                 $kinopoisk=$a[0];
                 preg_match('~tt.[0-9]{1,}~',$request->imdb,$a);
                 $imdb=$a[0];

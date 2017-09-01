@@ -245,20 +245,19 @@ public function getReleaseImdb($url)
             ->get();
        foreach ($updated_films as $film){
            //доделать функцию обновления даты
-           if($film->DVD_sourse!=null){
+           if($film->DVD_source!=null){
                $new_date=$this->parse_blu_ray($film->DVD_source);
                if($new_date!=0){
                    $new_date=trim($new_date);
-                   if($new_date!=$film->Blu_ray){
+                   if($new_date!=$film->DVD_release){
                        //Сделать функцию добавления в новости
                        $film_model=Film::find($film->id);
-
-                       $film_model->Blu_ray=$new_date;
+                       $film_model->DVD_release=$new_date;
                        $film_model->save();
-                       FilmChange::insert([
+                    /*   FilmChange::insert([
                            'film_id'=>$film->id,
                            'DVD_release'=>1
-                       ]);
+                       ]);*/
                        echo "Дата изменена".$film_model->title."<br>";
                    }else{
                        echo "Даты совпали <br>";

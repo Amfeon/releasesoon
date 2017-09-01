@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="02jOB7DICDF9XjHoxsxNclYzXSWCjzeaUksskb4719A" />
+    <meta name="google-site-verification" content="V2fzo17em5IAKQaf4zVBurJ_RQ14Wut5N4SJFj7EpNk" />
     <meta name="_token" content="{!! csrf_token() !!}"/>
 
     <style type="text/css">
