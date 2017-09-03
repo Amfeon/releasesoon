@@ -288,7 +288,7 @@ public function getReleaseImdb($url)
                         ]);*/
                         echo "Дата изменена ".$film_model->title." на ".$new_date."<br>";
                     }else{
-                        echo "Даты совпали для ".$film_model->title."<br>";
+                        echo "Даты совпали для ".$film->title."<br>";
                         continue;
                     }
                 }
