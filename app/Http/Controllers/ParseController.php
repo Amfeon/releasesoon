@@ -207,8 +207,8 @@ public function getReleaseImdb($url)
             return 0;
             //$data=null;
         } else {
-            foreach ($all->find('//*[@id="leftcolumn"]/div[2]/div[1]/table/tbody/tr/td[2]/table/tbody/tr[1]/td/h2/span[2]') as $link) {
-                $itunes_date = $link->innertext;
+            foreach ($all->find('//*[@id="leftcolumn"]/div[2]/div[1]/table/tbody/tr/td[2]/table/tbody/tr[1]/td/h2/span[2]') as $link) { //
+                 $itunes_date = $link->innertext;
                 if ($itunes_date != 'not announced') {
                     $data = $itunes_date;
                     $data = preg_replace('~is estimated for~', '', $data);
@@ -236,8 +236,6 @@ public function getReleaseImdb($url)
             $date = $year . '-' . $month . '-' . $day;
         }
         return $date;
-
-
     }
     //обновление DVD релизов
     public function update_Blu_ray(){

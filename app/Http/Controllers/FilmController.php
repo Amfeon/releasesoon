@@ -43,6 +43,14 @@ class FilmController extends Controller
         $release=$film->DVD_release;
         $release=explode('-',$release);
         $date_release['DVD_release']=$release[2].$this->ToRussia($release[1]).$release[0];
+        $itunes=$film->itunes;
+        $itunes=explode('-',$itunes);
+        if($itunes[2]!=0){
+            $date_release{'itunes'}=$itunes[2].$this->ToRussia($itunes[1]).$itunes[0];    
+        }else{
+            $date_release['itunes']=0;
+        }
+        
         $trailer=Film::find($id)->trailers;
         return view('film',['film' => $film,'trailers'=>$trailer,'date'=>$date_release]);
     }

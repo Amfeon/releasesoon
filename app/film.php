@@ -48,10 +48,11 @@ public function createFilm($date){
    // $budjet=$date['budjet'];
     $kinopoisk=$date['kinopoisk'];
     $DVD_sourse=$date['DVD_sourse'];
+    $itunes=$date['DVD_sourse'];
     $actors=$date['actors'];
     $director=$date['director'];
     $trailer=$date['trailer'];
-    preg_match('~[0-9]{4,}~',$kinopoisk,$a);
+    preg_match('~[0-9]{5,}~',$kinopoisk,$a);
     $kinopoisk=$a[0];
     preg_match('~tt.[0-9]{1,}~',$imdb,$a);
     $imdb=$a[0];
@@ -70,7 +71,8 @@ public function createFilm($date){
          'kinopoisk' => $kinopoisk,
          'director' => $director,
          'actors' => $actors,
-         'trailer' => $trailer
+         'trailer' => $trailer,
+          'itunes'=>$itunes
         ]
     );
     return $id;
