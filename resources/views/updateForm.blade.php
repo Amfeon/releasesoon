@@ -8,7 +8,8 @@
             <div  id="parse" class="btn btn-warning">Спарсить</div>
             <a target="_blank"  href="http://www.imdb.com/title/{{$film->imdb}}"><div class="btn btn-info">Перейти на сайт</div></a>
             <div class="row alert alert-info">
-                <label>Дата Blu_ray: </label>{{$mass_date['Blu_ray']}}<br/>
+                <label>Дата DVD: </label>{{$mass_date['Blu_ray']}}<br/>
+                <label>Дата itunes/Blu_ray: </label>{{$mass_date['itunes']}}<br/>
                 <label>Дата Выхода: </label>{{$mass_date['Release_date']}}<br/>
             </div>
             <input type="text" class="form-control"  name="imdb" value="{{$film->imdb}}">
@@ -37,9 +38,12 @@
             <label class="control-label">Дата выхода</label>
             <input type="text" class="form-control"  name="release" value="{{$film->date_release}}">
             <input type="hidden" name="Old_release" value="{{$film->date_release}}">
-            <label class="control-label">Блю-рей релиз</label>
+            <label class="control-label">DVD релиз</label>
             <input type="text" class="form-control"  name="Blu_ray" value="{{$film->DVD_release}}">
             <input type="hidden" name="Old_Blu_ray" value="{{$film->DVD_release}}">
+            <label class="control-label">Блю-рей релиз</label>
+            <input type="text" class="form-control"  name="itunes" value="{{$film->itunes}}">
+            <input type="hidden" name="Old_Blu_ray" value="{{$film->itunes}}">
             <label class="control-label">Картинка</label>
             <input type="text" class="form-control"  name="image" value="{{$film->image}}">
 

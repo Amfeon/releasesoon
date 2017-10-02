@@ -75,6 +75,7 @@ class FilmController extends Controller
                 $kino->imdb=$request->imdb;
                 $kino->DVD_release=$request->Blu_ray;
                 $kino->date_release=$request->release;
+                $kino->itunes=$request->itunes;
                 $kino->description=$request->description;
                 $kino->DVD_source=$request->dvd_source;
                 $kino->kinopoisk=$request->kinopoisk;
@@ -109,6 +110,7 @@ class FilmController extends Controller
                         'imdb' => $imdb,
                         'DVD_release' => $request->Blu_ray,
                         'date_release' => $request->release,
+                        'itunes' => $request->itunes,
                         'description' => $request->description,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
@@ -145,16 +147,20 @@ class FilmController extends Controller
                $imdb_source=$film->imdb;
             }
             if($DVD_source!=null) {
-                $Blu_ray = $parse->parse_blu_ray($DVD_source);// получаем спарсенную дату
-                if ($Blu_ray == 0) {
-                    $Blu_ray = 'Дата не анонсирована';
+                $Blu_ray2 = $parse->parse_blu_ray($DVD_source);// получаем спарсенную дату
+                if ($Blu_ray2 == 0) {
+                    $Blu_ray['dvd'] = 'Дата не анонсирована';
+                    $Blu_ray['itunes'] = 'Дата не анонсирована';
+                }else{
+                    $Blu_ray=$Blu_ray2;
                 }
             }else{
-                $Blu_ray = 'Нет источника';
+                $Blu_ray['dvd'] = 'Нет источника';
+                $Blu_ray['itunes'] = 'Нет источника';
             }
             /*НАписать проверку новой даты выхода фильма*/
             $release_date=$parse->getReleaseImdb($imdb_source);
-                $mass_date=['Blu_ray'=>$Blu_ray,'Release_date'=>$release_date];
+                $mass_date=['Blu_ray'=>$Blu_ray['dvd'],'Release_date'=>$release_date, 'itunes'=>$Blu_ray['itunes']];
                 return view('updateForm',['films'=>$films, 'mass_date'=>$mass_date]);
             }else{
                 $films=$filmModel->getFilm();// создать получение всех записей

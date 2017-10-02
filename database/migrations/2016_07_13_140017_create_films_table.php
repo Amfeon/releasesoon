@@ -20,6 +20,7 @@ class CreateFilmsTable extends Migration
             $table->string('actors');
             $table->date('date_release');
             $table->date('DVD_release');
+            $table->date('itunes');
             $table->text('plot');
             $table->string('image');
             $table->char('imdb',50);
