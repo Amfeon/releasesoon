@@ -110,7 +110,7 @@ class FilmController extends Controller
                         'imdb' => $imdb,
                         'DVD_release' => $request->Blu_ray,
                         'date_release' => $request->release,
-                        'itunes' => $request->itunes,
+                        'itunes' => $request->Blu_ray,
                         'description' => $request->description,
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
