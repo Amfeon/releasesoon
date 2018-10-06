@@ -201,6 +201,10 @@ public function getReleaseImdb($url)
         foreach ($all->find('//*[@id="leftcolumn"]/div[2]/div[1]/table/tbody/tr/td[2]/table/tbody/tr[1]/td/h2/span[1]') as $link) {
             $data['dvd'] = $link->innertext;
             $data['dvd'] = preg_replace('~is estimated for~', '', $data['dvd']);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a631dd65696ce473a7516680405ea5d119b033e
         }
         if ($data['dvd'] == 'not announced') {
             return 0;
@@ -215,16 +219,25 @@ public function getReleaseImdb($url)
                     $data['dvd'] = preg_replace('~is estimated for~', '',  $data['dvd']);
                 }
             }*/
+<<<<<<< HEAD
             $data['itunes']=0;
+=======
+>>>>>>> 9a631dd65696ce473a7516680405ea5d119b033e
             foreach ($all->find('//*[@id="leftcolumn"]/div[2]/div[1]/table/tbody/tr/td[2]/table/tbody/tr[1]/td/h2/span[2]') as $link) { //поиск цифровой версии
                  $itunes_date = $link->innertext;
                 if ($itunes_date != 'not announced') {
                     $data['itunes'] = $itunes_date;
                     $data['itunes'] = preg_replace('~is estimated for~', '', $data['itunes']);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a631dd65696ce473a7516680405ea5d119b033e
                 }
             }
+
         }
         //Фишка с месяцем
+<<<<<<< HEAD
             $date['dvd']=$this->otbor($data['dvd']);
         if($data['itunes']!=''){
             $date['itunes']=$this->otbor($data['itunes']);
@@ -235,6 +248,17 @@ public function getReleaseImdb($url)
        //  return 0;
     }
 
+=======
+
+
+            $date['dvd']=$this->otbor($data['dvd']);
+            $date['itunes']=$this->otbor($data['itunes']);
+
+          return $date;
+       //  return 0;
+    }
+
+>>>>>>> 9a631dd65696ce473a7516680405ea5d119b033e
     public function otbor($data){//очистка даты
         $mass = explode(',', $data);
         if (isset($mass[1])) {
@@ -278,7 +302,11 @@ public function getReleaseImdb($url)
                        ]);*/
                        echo "Дата изменена".$film_model->title."<br>";
                    }else{
+<<<<<<< HEAD
                        echo "Даты совпали для".$film->title."<br>";
+=======
+                       echo "Даты совпали для".$film_model->title."<br>";
+>>>>>>> 9a631dd65696ce473a7516680405ea5d119b033e
                        continue;
                    }
                }
