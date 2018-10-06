@@ -152,17 +152,13 @@ class FilmController extends Controller
                     $Blu_ray['dvd'] = 'Дата не анонсирована';
                     $Blu_ray['itunes'] = 'Дата не анонсирована';
                 }else{
-<<<<<<< HEAD
                     if($Blu_ray2['itunes'] == 0){
                         $Blu_ray['itunes'] = 'Дата не анонсирована';
                         $Blu_ray['dvd']=$Blu_ray2['dvd'];
                     }else{
                         $Blu_ray=$Blu_ray2;
                     }
-
-=======
                     $Blu_ray=$Blu_ray2;
->>>>>>> 9a631dd65696ce473a7516680405ea5d119b033e
                 }
             }else{
                 $Blu_ray['dvd'] = 'Нет источника';
