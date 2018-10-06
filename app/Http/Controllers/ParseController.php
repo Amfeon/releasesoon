@@ -193,33 +193,50 @@ public function getReleaseImdb($url)
             }
         }
     public function parse_blu_ray($url){
-        // $url =  'http://www.dvdsreleasedates.com/movies/7349/the-magnificent-seven';
-        // $url =  'http://www.dvdsreleasedates.com/movies/7416/the-accountant';
-        // $url =  'http://www.dvdsreleasedates.com/movies/6184/Resident-Evil-6-The-Final-Chapter-2016.html';
+        // $url =  'https://www.dvdsreleasedates.com/movies/7617/the-equalizer-2'; // анонсирован только месяц
+        // $url =  'https://www.dvdsreleasedates.com/movies/8026/the-meg'; //анонсирован только DVD без тюнса
+      //   $url =  'https://www.dvdsreleasedates.com/movies/7783/ant-man-and-the-wasp'; //все анонсировано
         $simpleHTML = new Htmldom();
         $all = $simpleHTML->file_get_html($url);
         foreach ($all->find('//*[@id="leftcolumn"]/div[2]/div[1]/table/tbody/tr/td[2]/table/tbody/tr[1]/td/h2/span[1]') as $link) {
-            $data = $link->innertext;
-            $data = preg_replace('~is estimated for~', '', $data);
-
+            $data['dvd'] = $link->innertext;
+            $data['dvd'] = preg_replace('~is estimated for~', '', $data['dvd']);
         }
-        if ($data == 'not announced') {
+        if ($data['dvd'] == 'not announced') {
             return 0;
             //$data=null;
         } else {
-            foreach ($all->find('//*[@id="leftcolumn"]/div[2]/div[1]/table/tbody/tr/td[2]/table/tbody/tr[1]/td/h2/span[2]') as $link) { //
+            //поиск DVD
+
+          /*  foreach ($all->find(' //*[@id="leftcolumn"]/div[2]/div[1]/table/tbody/tr/td[2]/table/tbody/tr[1]/td/h2/span[1]') as $link) {
+                $itunes_date = $link->innertext;
+                if ($itunes_date != 'not announced') {
+                    $data['dvd'] = $itunes_date;
+                    $data['dvd'] = preg_replace('~is estimated for~', '',  $data['dvd']);
+                }
+            }*/
+            $data['itunes']=0;
+            foreach ($all->find('//*[@id="leftcolumn"]/div[2]/div[1]/table/tbody/tr/td[2]/table/tbody/tr[1]/td/h2/span[2]') as $link) { //поиск цифровой версии
                  $itunes_date = $link->innertext;
                 if ($itunes_date != 'not announced') {
-                    $data = $itunes_date;
-                    $data = preg_replace('~is estimated for~', '', $data);
+                    $data['itunes'] = $itunes_date;
+                    $data['itunes'] = preg_replace('~is estimated for~', '', $data['itunes']);
                 }
             }
         }
         //Фишка с месяцем
-        //  if($data!=null){
+            $date['dvd']=$this->otbor($data['dvd']);
+        if($data['itunes']!=''){
+            $date['itunes']=$this->otbor($data['itunes']);
+        }else{
+            $date['itunes']=0;
+        }
+          return $date;
+       //  return 0;
+    }
 
+    public function otbor($data){//очистка даты
         $mass = explode(',', $data);
-
         if (isset($mass[1])) {
             $year = $mass[1];
             $temp = explode(' ', $mass[0]);
@@ -242,15 +259,18 @@ public function getReleaseImdb($url)
         $updated_films =Film::select('id' ,'DVD_release','DVD_source')-> whereBetween('DVD_release',[Carbon::now()->subWeekday(20),Carbon::now()->addMonth(8)])
             ->get();
        foreach ($updated_films as $film){
-           //доделать функцию обновления даты
            if($film->DVD_source!=null){
-               $new_date=$this->parse_blu_ray($film->DVD_source);
-               if($new_date!=0){
-                   $new_date=trim($new_date);
-                   if($new_date!=$film->DVD_release){
+               $new_date=$this->parse_blu_ray($film->DVD_source);//получение массива спарсенных дат
+               if($new_date['dvd']!=0 || $new_date['itunes']!=0){
+                   $new_date['dvd']=trim($new_date['dvd']);
+                   $new_date['itunes']=trim($new_date['itunes']);
+                   if($new_date['dvd']!=$film->DVD_release){
                        //Сделать функцию добавления в новости
                        $film_model=Film::find($film->id);
-                       $film_model->DVD_release=$new_date;
+                       $film_model->DVD_release=$new_date['dvd'];
+                       if($new_date['itunes']!=$film->itunes){
+                           $film_model->itunes=$new_date['itunes'];
+                       }
                        $film_model->save();
                     /*   FilmChange::insert([
                            'film_id'=>$film->id,
@@ -258,7 +278,7 @@ public function getReleaseImdb($url)
                        ]);*/
                        echo "Дата изменена".$film_model->title."<br>";
                    }else{
-                       echo "Даты совпали <br>";
+                       echo "Даты совпали для".$film->title."<br>";
                        continue;
                    }
                }
@@ -269,7 +289,10 @@ public function getReleaseImdb($url)
     public  function update_imdb(){
         $updated_films =Film::select('id' ,'date_release','imdb')-> whereBetween('date_release',[Carbon::now()->subWeekday(20),Carbon::now()->addMonth(5)])
             ->get();
+        //задержка
+
         foreach ($updated_films as $film){
+            echo "Задержка 5 сек <br>";
             //доделать функцию обновления даты
             if($film->imdb!=null){
                 $new_date=$this->getReleaseImdb($film->imdb);

@@ -2,7 +2,7 @@
 @section('head')
 
     <title>
-        Резульатты поиска
+        Результаты поиска
     </title>
 
 @endsection

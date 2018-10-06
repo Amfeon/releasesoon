@@ -48,11 +48,10 @@ public function createFilm($date){
    // $budjet=$date['budjet'];
     $kinopoisk=$date['kinopoisk'];
     $DVD_sourse=$date['DVD_sourse'];
-    $itunes=$date['DVD_sourse'];
     $actors=$date['actors'];
     $director=$date['director'];
     $trailer=$date['trailer'];
-    preg_match('~[0-9]{5,}~',$kinopoisk,$a);
+    preg_match('~[0-9]{4,}~',$kinopoisk,$a);
     $kinopoisk=$a[0];
     preg_match('~tt.[0-9]{1,}~',$imdb,$a);
     $imdb=$a[0];
@@ -72,14 +71,14 @@ public function createFilm($date){
          'director' => $director,
          'actors' => $actors,
          'trailer' => $trailer,
-          'itunes'=>$itunes
+		 'itunes'=>$itunes
         ]
     );
     return $id;
     //return DB::insert('INSERT INTO `films` (`title`, `image`, `original`, `plot`, `imdb`, `Blu_ray`, `release`, `description`, `created_at`, `updated_at`,`DVD_source`,`kinopoisk`, `director`,`actors` ,`trailer`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$title, $image, $original, $plot, $imdb, $Blu_ray, $release, $description,Carbon::now(),Carbon::now(),$DVD_sourse,$kinopoisk,$director,$actors,$trailer]);
 }
     public function getFilm(){
-        $a=DB::select('select id,title from films ORDER BY id DESC LIMIT 100');
+        $a=DB::select('select id,title from films ORDER BY id DESC ');
         return $a;
     }
     public function getUpdatedFilm($id){

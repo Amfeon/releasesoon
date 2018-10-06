@@ -36,13 +36,14 @@ Route::get('/dvd/{data?}','FilmController@Blu_ray')->where(['data'=>'\w{3,9}\-\d
 Route::get('/tv','SerialController@main');
 Route::post('/rating','RatingController@showRating');
 Route::post('/ratingAdd','RatingController@calcRating'); //нужен будет посредник на отправку аякс
-Route::get('/news','NewsController@changes_show');
+Route::get('/release-changes','NewsController@changes_show');
 Route::get('/profile','UserController@profile');
 Route::post('/profile','UserController@update_avatar');
 Route::get('/sitemap.xml','SitemapController@index');
 Route::get('/search', function (){
     return view('search');
 });
+Route::post('/contact', 'Ajax\ContactController@send');
 
 
 /*Route::get('/create',['middleware'=> 'auth'

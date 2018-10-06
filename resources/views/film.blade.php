@@ -47,7 +47,7 @@
         <div class="date_block">
             <div class="stroka"><strong >Дата выхода в России: </strong>             <p class="date"> <span itemprop="datePublished">{{$date['date_release']}}</span> года</p></div>
             <div class="stroka"><strong >Дата DVD релиза: </strong>                  <p class="date"> {{$date['DVD_release']}} года</p></div>
-            @if($date['itunes']!=0)<div class="stroka"><strong >Дата Blu-Ray (iTunes) релиза </strong>      <p class="date"> {{$date['itunes']}} года</p></div>@endif
+            @if($date['itunes']!=0)<div class="stroka"><strong >Цифровой релиз (iTunes Blu-Ray)  </strong>      <p class="date"> {{$date['itunes']}} года</p></div>@endif
             <div class="share" id="rating">
             </div>
             <div class="stroka"><strong >Режиссер: </strong>                         <p class="date" itemprop="director"> {{$film->director}}</p></div>
