@@ -72,6 +72,9 @@ class ParseController extends Controller
                 // echo "Отечественная дата:<br>";
                 if (preg_match('~[[:digit:]]{1,2} [[:alpha:]]{3,9} [[:digit:]]{4}~', $data, $array)) {
                     $date = explode(' ', $array[0]);
+                    if($date[0]<10){
+                        $date[0]='0'.$date[0];
+                    }
                     $data = $date[2] . '-' . $this->dat($date[1]) . '-' . $date[0];
                 } else {
                     $data = null;
@@ -97,13 +100,14 @@ class ParseController extends Controller
                 $image_sourse = $link->src;
             }
             //поиск заголовка
-            foreach ($all->find('//*[@id="title-overview-widget"]/div[2]/div[2]/div/div/div[2]/h1') as $link) {
+
+            foreach ($all->find('//*[@id="title-overview-widget"]/div[1]/div[2]/div/div/div[2]/h1') as $link) {
                 $title = $link->innertext;
                 $title = preg_replace('~<span.*<\/span>~', '', $title);
                 if (!preg_match('/[а-я]{3,}/iu', $title)) { //Если название нерусское
                     $flag = 1;
                 } else {
-                    foreach ($all->find('//*[@id="title-overview-widget"]/div[2]/div[2]/div/div/div[2]/div[1]') as $link) {
+                    foreach ($all->find('//*[@id="title-overview-widget"]/div[1]/div[2]/div/div/div[2]/div[1]') as $link) {
                         //*[@id="title-overview-widget"]/div[2]/div[2]/div/div[2]/div[2]/div[1]
                         echo $original = $link->innertext;
                         if($original==null){
@@ -112,9 +116,6 @@ class ParseController extends Controller
                     }
                 }
             }
-
-
-
             $title = trim($title);
             if ($flag == 1) {// если нерусское
                 $original = $title;
