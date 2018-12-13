@@ -3,3 +3,4 @@ public/css/node_modules/
 /bootstrap/
 /storage/
 *.env
+*.jpg

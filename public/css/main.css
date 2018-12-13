@@ -59,3 +59,22 @@ img{
 .arrow-right:hover{
     background:   #2b86e1 url("/image/arrow_r_active.jpg") no-repeat scroll center center;
 }
+.showUpdate {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.showUpdate li {
+    margin: 10px 0;
+}
+.red-btn{
+    background-color: darkred;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+}
+.search_movie{
+    text-align: center;
+    margin: 20px 0;
+}

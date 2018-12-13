@@ -96,7 +96,7 @@ class ParseController extends Controller
             $all = $simpleHTML->file_get_html($url);
             $release_date=$this->getReleaseImdb($url);
             //поиск картинки
-            foreach ($all->find('//*[@id="title-overview-widget"]/div[2]/div[3]/div[1]/a/img') as $link) {
+            foreach ($all->find('//*[@id="title-overview-widget"]/div[1]/div[3]/div[1]/a/img') as $link) {
                 $image_sourse = $link->src;
             }
             //поиск заголовка
