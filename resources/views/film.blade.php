@@ -30,7 +30,6 @@
         <div class="image_block">
             <div class="picture">
                 <img itemprop="image" class="img-thumbnail" title="{{$film->title}}" alt="{{$film->title}}" src="{{'../'.$film->image}}">
-                <div class="social"><div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir"></div></div>
             </div>
             <div class="icon">
                 @if($film->date_release<=@date('Y-m-d'))

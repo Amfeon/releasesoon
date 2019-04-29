@@ -19,24 +19,22 @@
                 </p>
             </div>
             <div class="row">
-                <div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir"></div>
-            </div>
-            <div class="row">
-                <ul id='scroll' >
-                    @foreach($films as $film)
-                        <li>
-                            <div class='poster'>
-                                <div class="stripe_up">
-                                    {{$film->title}}
+
+                    <ul id='scroll' >
+                        @foreach($films as $film)
+                            <li>
+                                <div class='poster'>
+                                    <div class="stripe_up">
+                                        {{$film->title}}
+                                    </div>
+                                    <a href='film/{{$film->id}}'>
+                                        <img  width="150" height="250" src ='{{$film->image}}' alt='Подробнее о фильме {{$film->title}}' title='Подробнее о фильме {{$film->title}}'/>
+                                    </a>
+                                    <div class="stripe_down">Дата Выхода:<br/> {{@date('d-m-Y', strtotime($film->date_release))}}</div>
                                 </div>
-                                <a href='film/{{$film->id}}'>
-                                    <img  width="150" height="250" src ='{{$film->image}}' alt='Подробнее о фильме {{$film->title}}' title='Подробнее о фильме {{$film->title}}'/>
-                                </a>
-                                <div class="stripe_down">Дата Выхода:<br/> {{@date('d-m-Y', strtotime($film->date_release))}}</div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+                            </li>
+                        @endforeach
+                    </ul>
             </div>
             <div id="more" class="more_scroll">
                 <p>

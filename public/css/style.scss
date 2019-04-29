@@ -118,7 +118,8 @@ ul, body{
   display: flex;
   justify-content:center;
   align-content:center;
-  height: 50px;
+  align-items: center;
+    height: 50px;
   color: white;
   background: linear-gradient(#2589ED, #3F94EA);
   width: calc(100% - 30px);
@@ -289,7 +290,7 @@ color: white;
   }
 }
 .icon{
-  flex-basis: 110px;
+  flex-basis: 120px;
   @include col(4);
   @include col-xs(12);
 }
@@ -521,9 +522,7 @@ z-index: 999;
 }
 .add_film{
   color: #fff;
-  border-radius: 15px;
   font-weight:700;
-  border: 1px solid #aaa;
   padding: 5px;
 &:before{
   content: '+';

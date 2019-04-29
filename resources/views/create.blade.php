@@ -62,7 +62,9 @@
 <script>
     $('createForm').validate();
 </script>
-<script>tinymce.init({ selector:'textarea',
+<script>tinymce.init({
+	content_style: ".mce-content-body {font-size:18px;font-family:Arial,sans-serif;}",
+	selector:'textarea',
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',
