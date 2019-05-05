@@ -314,6 +314,18 @@ class ParseController extends Controller
         $link= $this->getImage($url,$title);
         echo $link;
     }
+    public function parseItunes(){
+        $url='https://itunes.apple.com/ru/movie/капитан-марвел/id1454078291';
+        $url='https://itunes.apple.com/ru/movie/мстители-финал/id1459467883'; //Мститлели
+        $simpleHTML = new Htmldom();
+        $all = $simpleHTML->file_get_html($url);
+       // foreach ($all->find('.inline-list__item--preorder-media') as $link) {
+        foreach ($all->find('span[data-test-price=preorder]') as $link) {
+            $data['dvd'] = $link->innertext;
+          //  $data['dvd'] = preg_replace('~is estimated for~', '', $data['dvd']);
+            dd($data);
+        }
+    }
 }
 
 

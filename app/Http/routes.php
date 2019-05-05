@@ -46,6 +46,7 @@ Route::get('/search', function (){
 Route::post('/contact', 'Ajax\ContactController@send');
 
 
+
 /*Route::get('/create',['middleware'=> 'auth'
     ,'uses'=>'FilmController@create']);*/
 
